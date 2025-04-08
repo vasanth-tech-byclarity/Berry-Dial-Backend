@@ -1,0 +1,47 @@
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+dist/
+build/
+pip-log.txt
+
+# Virtual Environment
+venv/
+env/
+.venv/
+
+# IDE & Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-*
+
+# Static files
+app/static/audio_*.mp3  # Ignore generated audio files
+
+# Logs
+*.log
+logs/
+
+# System
+.DS_Store
+Thumbs.db
+
+# Testing
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Dependency directories
+node_modules/  # If you add frontend tools
+
+# Local development
+*.local
