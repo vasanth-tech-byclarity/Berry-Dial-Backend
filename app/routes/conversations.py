@@ -1,7 +1,8 @@
 import json
 import traceback
-from fastapi import APIRouter,FastAPI, Request, WebSocket
+from fastapi import APIRouter,FastAPI, Request, WebSocket, HTTPException
 from fastapi.responses import FileResponse,HTMLResponse
+import os
 import mysql.connector
 from mysql.connector import Error
 from app.core.config import DB_CONFIG
@@ -12,7 +13,7 @@ from elevenlabs import ElevenLabs
 from elevenlabs.conversational_ai.conversation import Conversation
 from app.services.twilio_audio_interface import TwilioAudioInterface
 from starlette.websockets import WebSocketDisconnect
-from app.core.config import ELEVENLABS_API_KEY, BASE_URL, HEADERS, OPENAI_API_KEY,AGENT_ID
+from app.core.config import ELEVENLABS_API_KEY, BASE_URL, HEADERS, OPENAI_API_KEY,AGENT_ID, ALLOWED_ORIGINS
 
 router = APIRouter()
 
@@ -136,8 +137,16 @@ def get_audio(conversation_id: str):
             cursor.execute(query, (conversation_id,))
             result = cursor.fetchone()
             if result and result['audio_file']:
-                return FileResponse(result['audio_file'], media_type="audio/mpeg")
-        return {"message": "No audio available"}
+                # Check if the file exists
+                if os.path.exists(result['audio_file']):
+                    response = FileResponse(result['audio_file'], media_type="audio/mpeg")
+                    response.headers["Access-Control-Allow-Origin"] = ALLOWED_ORIGINS
+                    return response
+                else:
+                    raise HTTPException(
+                        status_code=404,
+                        detail="Audio file not found"
+                    )
     except Error as e:
         print(f"Database query error: {e}")
         return {"error": str(e)}
