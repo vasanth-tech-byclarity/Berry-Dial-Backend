@@ -1,0 +1,10 @@
+requests
+fastapi
+openai==0.28
+uvicorn
+mysql-connector-python
+gunicorn
+twilio
+starlette
+python-multipart
+elevenlabs

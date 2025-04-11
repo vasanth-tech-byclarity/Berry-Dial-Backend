@@ -1,0 +1,80 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 20px;
+}
+
+table {
+    width: 98%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+th {
+    background: #007bff;
+    color: white;
+}
+
+tr:nth-child(even) { 
+    background: #f9f9f9; 
+}
+
+.expand-btn {
+    cursor: pointer;
+    background: #28a745;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.expand-btn:hover {
+    background: #218838;
+}
+
+.hidden-row {
+    display: none;
+}
+
+.transcript-container {
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 5px;
+    margin-top: 5px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.status-booked {
+    color: white;
+    background: #28a745;
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.status-pending {
+    color: white;
+    background: #dc3545;
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+audio {
+    width: 120px;
+}
