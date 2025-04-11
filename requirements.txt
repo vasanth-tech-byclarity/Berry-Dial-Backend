@@ -8,3 +8,4 @@ twilio
 starlette
 python-multipart
 elevenlabs
+python-dotenv
