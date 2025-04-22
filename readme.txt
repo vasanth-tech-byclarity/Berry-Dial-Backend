@@ -48,7 +48,7 @@ $ pip install -r requirements.txt
 ----------------------------
 Start the FastAPI backend by running:
 
-> python -m uvicorn app.main:app --reload
+> python -m uvicorn main:app --reload
 
 
 - The API will run on: http://127.0.0.1:8000/
